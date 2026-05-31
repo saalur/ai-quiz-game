@@ -3,8 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 if (!process.env.ANTHROPIC_API_KEY) {
-  console.error('[Config] FATAL: ANTHROPIC_API_KEY is not set. Exiting.');
-  process.exit(1);
+  console.warn('[Config] WARNING: ANTHROPIC_API_KEY is not set. Questions will be served from the fallback bank.');
 }
 
 export const config = {

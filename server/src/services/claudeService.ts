@@ -31,6 +31,12 @@ class ClaudeService {
   }
 
   async generateQuestions(topic: Topic, difficulty: Difficulty, count: number): Promise<Question[]> {
+    // Skip Claude entirely if no API key is configured — use fallback bank
+    if (!config.anthropicApiKey) {
+      console.log('[Claude] No API key configured — using fallback question bank');
+      return this.getFallbackQuestions(topic, difficulty, count);
+    }
+
     const topicLabel = TOPIC_LABELS[topic];
     const gradeBand = GRADE_BANDS[difficulty];
 
