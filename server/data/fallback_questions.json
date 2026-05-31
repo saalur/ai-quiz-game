@@ -1,0 +1,822 @@
+{
+  "what_is_ai": {
+    "beginner": [
+      {
+        "id": 1,
+        "question": "What does AI stand for?",
+        "options": {
+          "A": "Automatic Intelligence",
+          "B": "Artificial Intelligence",
+          "C": "Advanced Internet",
+          "D": "Automated Information"
+        },
+        "correct": "B",
+        "fun_fact": "The term 'Artificial Intelligence' was first coined in 1956 at a conference at Dartmouth College by John McCarthy!"
+      },
+      {
+        "id": 2,
+        "question": "Which of the following is the best description of Artificial Intelligence?",
+        "options": {
+          "A": "A robot that looks exactly like a human",
+          "B": "A computer program that plays video games",
+          "C": "Computer systems that can perform tasks that normally require human intelligence",
+          "D": "The internet connected to smart devices"
+        },
+        "correct": "C",
+        "fun_fact": "AI systems can now recognize faces, understand speech, and even write poetry — things we used to think only humans could do!"
+      },
+      {
+        "id": 3,
+        "question": "Which of these is an example of AI you might use every day?",
+        "options": {
+          "A": "A paper book",
+          "B": "A voice assistant like Siri or Alexa",
+          "C": "A bicycle",
+          "D": "A regular calculator"
+        },
+        "correct": "B",
+        "fun_fact": "Voice assistants process billions of voice commands every day using AI to understand what you're saying!"
+      },
+      {
+        "id": 4,
+        "question": "What is the main goal of Artificial Intelligence?",
+        "options": {
+          "A": "To replace all humans with robots",
+          "B": "To make computers faster at math",
+          "C": "To create machines that can think and learn like humans",
+          "D": "To connect all computers to the internet"
+        },
+        "correct": "C",
+        "fun_fact": "Early AI researchers in the 1950s dreamed of creating machines as intelligent as humans — we're still working toward that goal!"
+      },
+      {
+        "id": 5,
+        "question": "Which scientist is known as the 'father of AI'?",
+        "options": {
+          "A": "Albert Einstein",
+          "B": "Isaac Newton",
+          "C": "John McCarthy",
+          "D": "Thomas Edison"
+        },
+        "correct": "C",
+        "fun_fact": "John McCarthy not only coined the term 'Artificial Intelligence' but also invented LISP, one of the earliest programming languages used for AI!"
+      },
+      {
+        "id": 6,
+        "question": "What can AI do that traditional computer programs cannot?",
+        "options": {
+          "A": "Follow exact instructions",
+          "B": "Learn from experience and improve over time",
+          "C": "Store information in memory",
+          "D": "Display information on a screen"
+        },
+        "correct": "B",
+        "fun_fact": "Traditional programs always do exactly what they're told. AI programs can actually get better the more data they see — like how you get better at a sport the more you practice!"
+      }
+    ],
+    "intermediate": [
+      {
+        "id": 1,
+        "question": "What is the difference between narrow AI and general AI?",
+        "options": {
+          "A": "Narrow AI is slower; general AI is faster",
+          "B": "Narrow AI performs specific tasks; general AI can reason across many domains",
+          "C": "Narrow AI is used by governments; general AI is used by companies",
+          "D": "Narrow AI requires the internet; general AI does not"
+        },
+        "correct": "B",
+        "fun_fact": "All AI systems today — including ChatGPT — are narrow AI. True general AI (AGI) that thinks like a human across all areas doesn't exist yet!"
+      },
+      {
+        "id": 2,
+        "question": "What is the Turing Test?",
+        "options": {
+          "A": "A test to measure the speed of a computer processor",
+          "B": "A security test used on websites",
+          "C": "A test where a human tries to tell whether they're talking to a human or a machine",
+          "D": "A test to measure how much data an AI has been trained on"
+        },
+        "correct": "C",
+        "fun_fact": "Alan Turing proposed this test in 1950. Some AI chatbots have fooled judges into thinking they're human — but experts debate whether this truly proves intelligence!"
+      },
+      {
+        "id": 3,
+        "question": "Which of these is NOT a branch of Artificial Intelligence?",
+        "options": {
+          "A": "Machine Learning",
+          "B": "Natural Language Processing",
+          "C": "Quantum Computing",
+          "D": "Computer Vision"
+        },
+        "correct": "C",
+        "fun_fact": "Quantum Computing is a type of computing technology — it uses quantum physics to process information, but it's a separate field from AI (though the two may work together in the future)!"
+      },
+      {
+        "id": 4,
+        "question": "What does it mean for an AI system to be 'trained'?",
+        "options": {
+          "A": "A human teaches the AI by typing instructions manually",
+          "B": "The AI is exposed to large amounts of data so it can learn patterns",
+          "C": "The AI exercises to become physically stronger",
+          "D": "The AI is connected to faster servers"
+        },
+        "correct": "B",
+        "fun_fact": "Large AI models like GPT-4 are trained on hundreds of billions of words from the internet — it would take a human thousands of years to read all that text!"
+      },
+      {
+        "id": 5,
+        "question": "What type of AI is used when a spam filter learns to identify junk emails?",
+        "options": {
+          "A": "Robotics",
+          "B": "Computer Vision",
+          "C": "Machine Learning",
+          "D": "Expert Systems"
+        },
+        "correct": "C",
+        "fun_fact": "Spam filters are one of the oldest practical applications of machine learning — Gmail's spam filter blocks about 100 million spam emails every single day!"
+      }
+    ],
+    "advanced": [
+      {
+        "id": 1,
+        "question": "What is the philosophical 'Chinese Room' argument, proposed by John Searle?",
+        "options": {
+          "A": "AI systems trained on Chinese data are more accurate",
+          "B": "A thought experiment suggesting that symbol manipulation alone does not constitute understanding or true intelligence",
+          "C": "A method of encoding AI algorithms using Chinese characters",
+          "D": "The argument that AI will first achieve consciousness in China"
+        },
+        "correct": "B",
+        "fun_fact": "Searle imagined a person in a room following rules to respond to Chinese symbols without understanding Chinese — suggesting AI might appear intelligent without truly 'understanding' anything!"
+      },
+      {
+        "id": 2,
+        "question": "What distinguishes symbolic AI from connectionist AI?",
+        "options": {
+          "A": "Symbolic AI uses graphics; connectionist AI uses text",
+          "B": "Symbolic AI uses explicit logic rules and representations; connectionist AI learns patterns from data through neural networks",
+          "C": "Symbolic AI is older and slower; connectionist AI is always better",
+          "D": "Symbolic AI runs on quantum computers; connectionist AI runs on GPUs"
+        },
+        "correct": "B",
+        "fun_fact": "Early AI was mostly symbolic — like chess programs that followed explicit rules. Modern AI is mostly connectionist — like neural networks that learn patterns from millions of examples!"
+      },
+      {
+        "id": 3,
+        "question": "What is 'emergent behavior' in large AI models?",
+        "options": {
+          "A": "When an AI system crashes unexpectedly",
+          "B": "When AI models develop capabilities not explicitly programmed, arising from scale and training",
+          "C": "When AI systems communicate with each other without human oversight",
+          "D": "When an AI model is deployed in an emergency situation"
+        },
+        "correct": "B",
+        "fun_fact": "Researchers discovered that as language models scaled up, they suddenly gained abilities like basic arithmetic and reasoning — abilities that appeared without being specifically trained for them!"
+      }
+    ]
+  },
+  "machine_learning": {
+    "beginner": [
+      {
+        "id": 1,
+        "question": "What is machine learning?",
+        "options": {
+          "A": "Teaching robots to walk and move",
+          "B": "A way for computers to learn from data without being explicitly programmed",
+          "C": "A program that types faster than humans",
+          "D": "A machine that teaches students in school"
+        },
+        "correct": "B",
+        "fun_fact": "The term 'machine learning' was coined in 1959 by Arthur Samuel, who built a checkers-playing program that improved by playing against itself!"
+      },
+      {
+        "id": 2,
+        "question": "Which of these is an example of machine learning?",
+        "options": {
+          "A": "A calculator that adds two numbers",
+          "B": "A music app that learns your favorite songs over time",
+          "C": "A digital clock showing the time",
+          "D": "A phone's alarm that rings at a set time"
+        },
+        "correct": "B",
+        "fun_fact": "Spotify's recommendation algorithm analyzes your listening habits and compares them with millions of other users to suggest songs you'll love!"
+      },
+      {
+        "id": 3,
+        "question": "What do machine learning models need to learn?",
+        "options": {
+          "A": "Electricity and batteries",
+          "B": "A fast internet connection",
+          "C": "Large amounts of data",
+          "D": "Human emotions"
+        },
+        "correct": "C",
+        "fun_fact": "The more data a machine learning model has, the better it usually performs — image recognition models are trained on millions of photos!"
+      },
+      {
+        "id": 4,
+        "question": "What is a 'label' in machine learning?",
+        "options": {
+          "A": "The name tag on a computer",
+          "B": "The correct answer used to train a model",
+          "C": "A type of computer cable",
+          "D": "A programming language for AI"
+        },
+        "correct": "B",
+        "fun_fact": "When training a model to recognize cats, humans label thousands of images as 'cat' or 'not cat' — this labeling work is called data annotation!"
+      },
+      {
+        "id": 5,
+        "question": "Which of the following best describes 'supervised learning'?",
+        "options": {
+          "A": "A teacher watching students take a test",
+          "B": "An AI learning from examples that include correct answers",
+          "C": "Machine learning done only by experts",
+          "D": "Learning that happens on a school computer"
+        },
+        "correct": "B",
+        "fun_fact": "Most practical AI applications today use supervised learning — from email spam filters to medical image analysis!"
+      },
+      {
+        "id": 6,
+        "question": "What happens when a machine learning model 'overfits'?",
+        "options": {
+          "A": "The model uses too much electricity",
+          "B": "The model memorizes training data but performs poorly on new data",
+          "C": "The model becomes too large to run",
+          "D": "The model takes too long to train"
+        },
+        "correct": "B",
+        "fun_fact": "Overfitting is like a student who memorizes every practice test answer without understanding the concepts — they fail on the real exam because they just memorized rather than learned!"
+      }
+    ],
+    "intermediate": [
+      {
+        "id": 1,
+        "question": "What is the difference between supervised and unsupervised learning?",
+        "options": {
+          "A": "Supervised learning uses computers; unsupervised learning uses humans",
+          "B": "Supervised learning uses labeled data; unsupervised learning finds patterns without labels",
+          "C": "Supervised learning is faster; unsupervised learning is more accurate",
+          "D": "Supervised learning is for images; unsupervised learning is for text"
+        },
+        "correct": "B",
+        "fun_fact": "Unsupervised learning is like sorting a pile of mixed candies by color without being told what colors exist — the AI figures out the groupings on its own!"
+      },
+      {
+        "id": 2,
+        "question": "What is a 'feature' in a machine learning dataset?",
+        "options": {
+          "A": "A special function added to an AI app",
+          "B": "An individual measurable property used as input to the model",
+          "C": "The output prediction of the model",
+          "D": "A bug fix in the model code"
+        },
+        "correct": "B",
+        "fun_fact": "To predict house prices, features might include number of bedrooms, location, and square footage — each piece of information the model uses to make its prediction!"
+      },
+      {
+        "id": 3,
+        "question": "What is reinforcement learning?",
+        "options": {
+          "A": "Training a model with more data",
+          "B": "An AI that learns through trial and error, receiving rewards for good actions",
+          "C": "Using human feedback to correct AI mistakes",
+          "D": "Training AI on text generated by other AI systems"
+        },
+        "correct": "B",
+        "fun_fact": "AlphaGo, the AI that beat the world champion at Go, used reinforcement learning — it played millions of games against itself to improve!"
+      },
+      {
+        "id": 4,
+        "question": "What does 'cross-validation' help machine learning engineers evaluate?",
+        "options": {
+          "A": "Whether two different AI models can work together",
+          "B": "How well a model generalizes to unseen data",
+          "C": "Whether the training data is from multiple languages",
+          "D": "How fast a model can process requests"
+        },
+        "correct": "B",
+        "fun_fact": "Cross-validation splits data multiple ways to test the model — like taking the same exam with different questions each time to see if you truly know the subject!"
+      },
+      {
+        "id": 5,
+        "question": "What is a 'decision tree' in machine learning?",
+        "options": {
+          "A": "A diagram showing how an AI company is organized",
+          "B": "A model that makes predictions by asking a series of yes/no questions",
+          "C": "A tree data structure used to store training data",
+          "D": "A type of neural network shaped like a tree"
+        },
+        "correct": "B",
+        "fun_fact": "Decision trees are used in medical diagnosis — doctors use them to ask questions like 'Does the patient have a fever?' to narrow down what's wrong!"
+      }
+    ],
+    "advanced": [
+      {
+        "id": 1,
+        "question": "What is the 'bias-variance tradeoff' in machine learning?",
+        "options": {
+          "A": "The balance between training speed and model accuracy",
+          "B": "The tension between a model's error due to wrong assumptions (bias) and sensitivity to data fluctuations (variance)",
+          "C": "The tradeoff between data quantity and data quality",
+          "D": "The balance between ethical AI and high-performing AI"
+        },
+        "correct": "B",
+        "fun_fact": "High bias means underfitting (the model is too simple); high variance means overfitting (the model is too complex). The goal is to find the sweet spot between them!"
+      },
+      {
+        "id": 2,
+        "question": "What does 'gradient descent' do in training a machine learning model?",
+        "options": {
+          "A": "It downloads training data from the internet",
+          "B": "It iteratively adjusts model parameters to minimize the loss function",
+          "C": "It selects which features to include in the model",
+          "D": "It splits data into training and test sets"
+        },
+        "correct": "B",
+        "fun_fact": "Gradient descent is like rolling a ball down a hilly landscape to find the lowest valley — each step moves the model slightly closer to its best possible parameters!"
+      }
+    ]
+  },
+  "neural_networks": {
+    "beginner": [
+      {
+        "id": 1,
+        "question": "What is a neural network inspired by?",
+        "options": {
+          "A": "The structure of the internet",
+          "B": "The human brain and its neurons",
+          "C": "A computer's file system",
+          "D": "The way electricity flows through wires"
+        },
+        "correct": "B",
+        "fun_fact": "The human brain has about 86 billion neurons — current AI neural networks, while impressive, have far fewer artificial neurons by comparison!"
+      },
+      {
+        "id": 2,
+        "question": "What is a 'neuron' in an artificial neural network?",
+        "options": {
+          "A": "A type of computer chip",
+          "B": "A single processing unit that receives inputs and produces an output",
+          "C": "A programming mistake in the code",
+          "D": "A power supply unit for computers"
+        },
+        "correct": "B",
+        "fun_fact": "Artificial neurons are loosely inspired by biological neurons in your brain — each one takes in signals, processes them, and sends a signal forward if activated!"
+      },
+      {
+        "id": 3,
+        "question": "What are the three main parts of a basic neural network?",
+        "options": {
+          "A": "CPU, GPU, and memory",
+          "B": "Input layer, hidden layers, and output layer",
+          "C": "Data, algorithm, and prediction",
+          "D": "Training, testing, and deployment"
+        },
+        "correct": "B",
+        "fun_fact": "The 'hidden layers' are where all the magic happens — these middle layers transform inputs in ways that help the network make accurate predictions!"
+      },
+      {
+        "id": 4,
+        "question": "What task are Convolutional Neural Networks (CNNs) especially good at?",
+        "options": {
+          "A": "Translating languages",
+          "B": "Playing board games",
+          "C": "Recognizing images and patterns",
+          "D": "Predicting weather"
+        },
+        "correct": "C",
+        "fun_fact": "CNNs can identify objects in photos faster and more accurately than most humans — they power everything from your phone's face unlock to self-driving cars!"
+      },
+      {
+        "id": 5,
+        "question": "What is 'deep learning'?",
+        "options": {
+          "A": "Learning very difficult subjects in school",
+          "B": "A type of neural network with many layers that learns complex patterns",
+          "C": "Storing AI models in deep ocean servers",
+          "D": "Teaching AI using information from old books"
+        },
+        "correct": "B",
+        "fun_fact": "The 'deep' in deep learning refers to the many layers in the network — some models have hundreds of layers, allowing them to recognize incredibly complex patterns!"
+      },
+      {
+        "id": 6,
+        "question": "What does 'training' a neural network involve?",
+        "options": {
+          "A": "Making the computer hardware stronger",
+          "B": "Adjusting the network's weights based on data until it makes accurate predictions",
+          "C": "Writing new programming code for the network",
+          "D": "Adding more neurons to the network"
+        },
+        "correct": "B",
+        "fun_fact": "Training large AI models can take weeks on thousands of powerful chips — training GPT-4 is estimated to have cost over $100 million in computing power!"
+      }
+    ],
+    "intermediate": [
+      {
+        "id": 1,
+        "question": "What is an 'activation function' in a neural network?",
+        "options": {
+          "A": "A function that turns the neural network on",
+          "B": "A mathematical function that determines whether and how strongly a neuron fires",
+          "C": "A function that activates the GPU for faster training",
+          "D": "A security function that protects the network from hacking"
+        },
+        "correct": "B",
+        "fun_fact": "Without activation functions, neural networks could only learn straight-line relationships. Functions like ReLU let networks learn curved, complex patterns!"
+      },
+      {
+        "id": 2,
+        "question": "What problem does 'dropout' regularization solve in neural networks?",
+        "options": {
+          "A": "It reduces training time by skipping unnecessary calculations",
+          "B": "It prevents overfitting by randomly deactivating neurons during training",
+          "C": "It removes incorrectly labeled data from the training set",
+          "D": "It reduces the size of the neural network's output"
+        },
+        "correct": "B",
+        "fun_fact": "Dropout was inspired by the observation that humans with diverse skill sets are more adaptable — by randomly 'dropping out' neurons, the network learns more robust features!"
+      },
+      {
+        "id": 3,
+        "question": "What are Recurrent Neural Networks (RNNs) particularly suited for?",
+        "options": {
+          "A": "Processing images and video frames",
+          "B": "Sequential data like text, speech, and time series",
+          "C": "Playing strategy games like chess",
+          "D": "Classifying medical images"
+        },
+        "correct": "B",
+        "fun_fact": "RNNs have a 'memory' — they pass information forward through a sequence, which makes them great for language tasks where earlier words affect the meaning of later ones!"
+      },
+      {
+        "id": 4,
+        "question": "What is 'backpropagation' in neural network training?",
+        "options": {
+          "A": "Running the neural network in reverse to generate inputs",
+          "B": "The algorithm that propagates error signals backward through layers to update weights",
+          "C": "Backing up the neural network's data to prevent loss",
+          "D": "The process of removing unnecessary layers from the network"
+        },
+        "correct": "B",
+        "fun_fact": "Backpropagation was popularized in the 1980s and remains the core algorithm powering most neural network training today — it's often called the engine of deep learning!"
+      },
+      {
+        "id": 5,
+        "question": "What is the 'vanishing gradient problem' in deep neural networks?",
+        "options": {
+          "A": "When training data gradually disappears from storage",
+          "B": "When gradients become extremely small in early layers, making it hard for them to learn",
+          "C": "When the network's predictions gradually worsen over time",
+          "D": "When the network forgets previously learned information"
+        },
+        "correct": "B",
+        "fun_fact": "This problem is why training very deep networks used to be nearly impossible — techniques like skip connections in ResNets and transformers helped solve it!"
+      }
+    ],
+    "advanced": [
+      {
+        "id": 1,
+        "question": "What is the key innovation of the Transformer architecture introduced in 'Attention Is All You Need' (2017)?",
+        "options": {
+          "A": "Using convolutions to process text sequences more efficiently",
+          "B": "Replacing recurrence with self-attention mechanisms that process all tokens in parallel",
+          "C": "Adding dropout regularization to language models",
+          "D": "Combining supervised and unsupervised learning in a single model"
+        },
+        "correct": "B",
+        "fun_fact": "The Transformer architecture, introduced by Google researchers, became the foundation of ChatGPT, BERT, and nearly every powerful language model in use today!"
+      }
+    ]
+  },
+  "ai_in_daily_life": {
+    "beginner": [
+      {
+        "id": 1,
+        "question": "Which app uses AI to recommend videos you might like?",
+        "options": {
+          "A": "A text message app",
+          "B": "YouTube",
+          "C": "A calculator app",
+          "D": "A maps app"
+        },
+        "correct": "B",
+        "fun_fact": "YouTube's recommendation algorithm watches over a billion hours of video suggested to users every single day — AI decides what shows up in your 'Up Next' feed!"
+      },
+      {
+        "id": 2,
+        "question": "How does your phone recognize your face to unlock?",
+        "options": {
+          "A": "It takes a photo and sends it to a person to check",
+          "B": "It uses AI and sensors to match your facial features",
+          "C": "It reads a barcode tattooed on your face",
+          "D": "It connects to the internet to verify your identity"
+        },
+        "correct": "B",
+        "fun_fact": "Modern phones use AI to create a 3D map of your face using infrared sensors — even in the dark — making it very hard to fool with a photo!"
+      },
+      {
+        "id": 3,
+        "question": "Which of the following is an example of AI used in healthcare?",
+        "options": {
+          "A": "A thermometer",
+          "B": "An AI that analyzes X-rays to help detect diseases",
+          "C": "A hospital bed",
+          "D": "A stethoscope"
+        },
+        "correct": "B",
+        "fun_fact": "AI can detect certain cancers in medical images with accuracy matching or sometimes exceeding that of experienced doctors — it's already saving lives!"
+      },
+      {
+        "id": 4,
+        "question": "How does a streaming service like Netflix use AI?",
+        "options": {
+          "A": "To film new movies and shows",
+          "B": "To recommend shows and movies based on your viewing history",
+          "C": "To control the brightness of your TV",
+          "D": "To check your internet connection speed"
+        },
+        "correct": "B",
+        "fun_fact": "Netflix estimates its recommendation system saves the company over $1 billion per year by keeping viewers engaged — AI knows you better than you might think!"
+      },
+      {
+        "id": 5,
+        "question": "What AI feature helps you get autocorrect suggestions when typing on your phone?",
+        "options": {
+          "A": "A dictionary app",
+          "B": "A predictive text algorithm",
+          "C": "A grammar teacher built into the phone",
+          "D": "A connection to a grammar website"
+        },
+        "correct": "B",
+        "fun_fact": "Predictive text learns your typing habits over time — which is why your phone sometimes suggests words or phrases unique to how you write!"
+      },
+      {
+        "id": 6,
+        "question": "Which of these tasks can AI translation tools now do?",
+        "options": {
+          "A": "Translate text between hundreds of languages in seconds",
+          "B": "Only translate between English and Spanish",
+          "C": "Translate only written text, not speech",
+          "D": "Translate only simple sentences"
+        },
+        "correct": "A",
+        "fun_fact": "Google Translate supports over 130 languages and translates for over 500 million users daily — AI has made real-time language translation available to everyone!"
+      }
+    ],
+    "intermediate": [
+      {
+        "id": 1,
+        "question": "How do self-driving cars use AI to navigate?",
+        "options": {
+          "A": "They follow pre-programmed routes stored on a map",
+          "B": "They use AI to process data from cameras, radar, and lidar to make real-time decisions",
+          "C": "They are remotely controlled by human operators at all times",
+          "D": "They only drive on specially marked smart roads"
+        },
+        "correct": "B",
+        "fun_fact": "A self-driving car's AI processes data from dozens of sensors, making hundreds of decisions per second — roughly the equivalent of 10 billion calculations every minute!"
+      },
+      {
+        "id": 2,
+        "question": "What is 'algorithmic bias' in AI systems used in daily life?",
+        "options": {
+          "A": "When an AI algorithm runs slower than expected",
+          "B": "When an AI system produces unfair results because of biased training data or design",
+          "C": "When an AI prefers certain brands in its recommendations",
+          "D": "When an AI is programmed to follow company policies"
+        },
+        "correct": "B",
+        "fun_fact": "Studies found that some AI hiring tools discriminated against women, and some facial recognition systems were less accurate for darker skin tones — the AI learned human biases from biased data!"
+      },
+      {
+        "id": 3,
+        "question": "What role does AI play in social media feeds?",
+        "options": {
+          "A": "AI writes posts on your behalf",
+          "B": "AI curates and prioritizes content based on your engagement patterns to maximize time on platform",
+          "C": "AI checks posts for spelling mistakes before they're published",
+          "D": "AI translates posts from other countries for you"
+        },
+        "correct": "B",
+        "fun_fact": "Social media algorithms are designed to maximize 'engagement' — meaning they show you content that will keep you scrolling, which can sometimes promote emotional or divisive content!"
+      },
+      {
+        "id": 4,
+        "question": "How do virtual assistants like Siri understand what you're saying?",
+        "options": {
+          "A": "They compare your voice to recordings of the same words",
+          "B": "They use speech recognition AI to convert audio to text, then natural language processing to understand meaning",
+          "C": "They connect to a server where humans listen and type responses",
+          "D": "They use a dictionary to match sounds to words"
+        },
+        "correct": "B",
+        "fun_fact": "Understanding spoken language is incredibly complex — accents, background noise, slang, and sarcasm all make it challenging. AI virtual assistants have improved dramatically in handling all of these!"
+      },
+      {
+        "id": 5,
+        "question": "What is 'generative AI' and how might students encounter it?",
+        "options": {
+          "A": "AI that generates electricity for computers",
+          "B": "AI that creates new content like text, images, or music based on prompts",
+          "C": "AI that generates test scores for students",
+          "D": "AI used to generate random quiz questions"
+        },
+        "correct": "B",
+        "fun_fact": "Tools like ChatGPT and DALL-E are generative AI — they can write essays, create artwork, compose music, and code programs from simple text descriptions!"
+      }
+    ],
+    "advanced": [
+      {
+        "id": 1,
+        "question": "What is the 'filter bubble' effect caused by AI recommendation systems?",
+        "options": {
+          "A": "When AI filters out low-quality content to improve user experience",
+          "B": "When personalization algorithms limit exposure to diverse viewpoints, reinforcing existing beliefs",
+          "C": "When AI spam filters accidentally block legitimate emails",
+          "D": "When AI content filters over-censor social media posts"
+        },
+        "correct": "B",
+        "fun_fact": "The term 'filter bubble' was coined by internet activist Eli Pariser in 2011. AI recommendation systems that optimize for engagement can inadvertently create echo chambers where people only see views they already agree with!"
+      }
+    ]
+  },
+  "ai_ethics": {
+    "beginner": [
+      {
+        "id": 1,
+        "question": "Why is it important for AI to be fair?",
+        "options": {
+          "A": "So that AI can win more competitions against humans",
+          "B": "So that AI systems treat all people equally and don't discriminate",
+          "C": "So that AI systems can work faster",
+          "D": "So that AI uses less electricity"
+        },
+        "correct": "B",
+        "fun_fact": "AI is now used to make decisions about loan applications, job interviews, and even criminal sentencing — unfair AI can seriously harm people's lives and opportunities!"
+      },
+      {
+        "id": 2,
+        "question": "What is a 'deepfake'?",
+        "options": {
+          "A": "A very deep neural network model",
+          "B": "AI-generated fake video or audio that makes someone appear to say or do something they didn't",
+          "C": "A type of fake data used to train AI",
+          "D": "A security technique used to protect AI systems"
+        },
+        "correct": "B",
+        "fun_fact": "Deepfakes are becoming increasingly realistic — some experts predict that by 2030, it may be nearly impossible to tell AI-generated video from real footage without special detection tools!"
+      },
+      {
+        "id": 3,
+        "question": "What does 'AI transparency' mean?",
+        "options": {
+          "A": "Making AI systems invisible so people don't notice them",
+          "B": "Being open about how AI systems work and make decisions",
+          "C": "Making AI hardware see-through like glass",
+          "D": "Sharing all AI training data with the public"
+        },
+        "correct": "B",
+        "fun_fact": "In the European Union, the AI Act requires that certain AI decisions must be explainable to the people affected by them — you have the right to know why an AI made a decision about you!"
+      },
+      {
+        "id": 4,
+        "question": "What is 'data privacy' in the context of AI?",
+        "options": {
+          "A": "Keeping computer hardware physically secure",
+          "B": "Protecting personal information from being collected or used without permission",
+          "C": "Preventing AI from accessing the internet",
+          "D": "Hiding the code that AI programs are built with"
+        },
+        "correct": "B",
+        "fun_fact": "AI companies collect enormous amounts of data to train their systems. Laws like GDPR in Europe give people rights over their data — including the right to have it deleted!"
+      },
+      {
+        "id": 5,
+        "question": "Why might an AI system be unfair even if no one intended it to be?",
+        "options": {
+          "A": "Because AI systems always have bugs",
+          "B": "Because AI learns from training data that may reflect existing human biases",
+          "C": "Because AI developers are always biased",
+          "D": "Because AI cannot understand human culture"
+        },
+        "correct": "B",
+        "fun_fact": "An AI trained mostly on photos of people of one race will be less accurate at recognizing other races — it's not intentional, but the result is still discrimination!"
+      },
+      {
+        "id": 6,
+        "question": "What does 'AI accountability' mean?",
+        "options": {
+          "A": "Making AI systems count numbers accurately",
+          "B": "Ensuring that people or organizations can be held responsible for AI decisions and their consequences",
+          "C": "Making AI systems run on accountants' computers",
+          "D": "Teaching AI to keep accurate financial records"
+        },
+        "correct": "B",
+        "fun_fact": "Accountability is tricky with AI — if an AI system denies someone a loan, who is responsible: the company that made the AI, the bank that used it, or the AI itself? These are real legal questions being debated today!"
+      }
+    ],
+    "intermediate": [
+      {
+        "id": 1,
+        "question": "What is the 'trolley problem' as it applies to AI ethics?",
+        "options": {
+          "A": "The challenge of moving heavy AI servers",
+          "B": "A thought experiment about how AI should make life-and-death decisions when all options involve harm",
+          "C": "The problem of AI systems trolling people online",
+          "D": "The ethical challenge of AI in online shopping carts"
+        },
+        "correct": "B",
+        "fun_fact": "Self-driving cars face real trolley problems — if a crash is unavoidable, should the car protect its passenger or minimize total harm? Engineers and ethicists are actively debating this!"
+      },
+      {
+        "id": 2,
+        "question": "What is 'informed consent' and why does it matter for AI data collection?",
+        "options": {
+          "A": "Getting users to agree to long terms of service they don't read",
+          "B": "Ensuring people knowingly and voluntarily agree to how their data will be collected and used",
+          "C": "Informing AI systems what data they are allowed to collect",
+          "D": "Getting government permission before collecting any user data"
+        },
+        "correct": "B",
+        "fun_fact": "Research shows that over 90% of people accept terms of service without reading them. Yet agreeing often means companies can use your data to train AI systems for years!"
+      },
+      {
+        "id": 3,
+        "question": "What is 'AI alignment' in AI safety research?",
+        "options": {
+          "A": "Making sure AI text is formatted correctly",
+          "B": "Ensuring AI systems pursue goals that are consistent with human values and intentions",
+          "C": "Aligning multiple AI systems to work together",
+          "D": "Training AI to align its predictions with training data"
+        },
+        "correct": "B",
+        "fun_fact": "AI alignment is one of the most important unsolved problems in technology — ensuring powerful AI systems actually want what's good for humanity is harder than it sounds!"
+      },
+      {
+        "id": 4,
+        "question": "What ethical concern does 'surveillance capitalism' raise about AI?",
+        "options": {
+          "A": "The use of AI to monitor employee productivity",
+          "B": "The business model of collecting personal behavioral data to predict and influence behavior for profit",
+          "C": "Government use of AI cameras in public spaces",
+          "D": "AI systems that watch for security threats in networks"
+        },
+        "correct": "B",
+        "fun_fact": "Professor Shoshana Zuboff coined the term 'surveillance capitalism' in 2019 — describing how companies like Google and Facebook built trillion-dollar businesses by monetizing human behavior data!"
+      },
+      {
+        "id": 5,
+        "question": "What is the 'automation paradox' regarding AI and jobs?",
+        "options": {
+          "A": "The fact that automation sometimes creates more jobs than it destroys in the long run",
+          "B": "The irony that AI intended to help workers often ends up replacing them",
+          "C": "The paradox that the most automatable jobs pay the most",
+          "D": "The observation that workers using AI become less skilled over time"
+        },
+        "correct": "A",
+        "fun_fact": "When ATMs were introduced, people predicted bank tellers would disappear — instead, the number of tellers increased because banks opened more branches! Automation's effect on jobs is complex and often surprising!"
+      }
+    ],
+    "advanced": [
+      {
+        "id": 1,
+        "question": "What is 'Goodhart's Law' and how does it apply to AI systems?",
+        "options": {
+          "A": "The principle that AI systems always improve with more data",
+          "B": "When a measure becomes a target it ceases to be a good measure — AI optimizing a metric can undermine the actual goal",
+          "C": "The law that AI systems must be tested before deployment",
+          "D": "The principle that AI ethics must be encoded in law"
+        },
+        "correct": "B",
+        "fun_fact": "Social media AI maximizes 'engagement' but this often means promoting outrage and misinformation. The AI achieved its metric perfectly while creating harmful real-world consequences — classic Goodhart's Law!"
+      },
+      {
+        "id": 2,
+        "question": "What is 'differential privacy' in AI and data science?",
+        "options": {
+          "A": "Using different privacy policies for different user groups",
+          "B": "A mathematical technique that adds noise to data queries to protect individual privacy while allowing useful statistical insights",
+          "C": "Giving premium users more privacy than free users",
+          "D": "The difference in privacy laws between countries"
+        },
+        "correct": "B",
+        "fun_fact": "Apple uses differential privacy in iOS to learn from millions of users' behavior without ever knowing any individual user's data — it's privacy protection built into the mathematics itself!"
+      },
+      {
+        "id": 3,
+        "question": "What does 'explainable AI' (XAI) aim to achieve?",
+        "options": {
+          "A": "Teaching AI to write clearer documentation",
+          "B": "Making AI systems' decision-making processes transparent and understandable to humans",
+          "C": "Training AI models that are simpler and faster",
+          "D": "Creating AI that can explain its code to other AI systems"
+        },
+        "correct": "B",
+        "fun_fact": "In high-stakes decisions like medical diagnosis or loan approval, a doctor or banker needs to know WHY the AI recommended something — 'the model said so' isn't good enough for decisions that affect people's lives!"
+      }
+    ]
+  }
+}
