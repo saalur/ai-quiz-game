@@ -4,15 +4,11 @@ import { claudeService } from './claudeService';
 
 const QUESTION_DURATION_MS = 30000; // 30 seconds
 
-function calculatePoints(correct: AnswerOption, selected: AnswerOption | null, questionStartedAt: number | null): number {
+function calculatePoints(correct: AnswerOption, selected: AnswerOption | null, questionStartedAt: number, submittedAt: number): number {
   if (!selected || selected !== correct) return 0;
-
-  const now = Date.now();
-  const elapsed = questionStartedAt ? now - questionStartedAt : QUESTION_DURATION_MS;
+  const elapsed = submittedAt - questionStartedAt;
   const timeRemaining = Math.max(0, QUESTION_DURATION_MS - elapsed);
-  const speedBonus = Math.floor((timeRemaining / QUESTION_DURATION_MS) * 50);
-
-  return 100 + speedBonus;
+  return 100 + Math.floor((timeRemaining / QUESTION_DURATION_MS) * 50);
 }
 
 function buildLeaderboard(room: Room): LeaderboardEntry[] {
@@ -58,8 +54,8 @@ class GameService {
     const room = await roomService.getRoom(roomCode);
     if (!room) throw Object.assign(new Error('Room not found'), { statusCode: 404, code: 'ROOM_NOT_FOUND' });
     if (room.status !== 'lobby') throw Object.assign(new Error('Game already started'), { statusCode: 400, code: 'GAME_ALREADY_STARTED' });
-    if (Object.keys(room.players).length === 0) {
-      throw Object.assign(new Error('No players in room'), { statusCode: 400, code: 'NO_PLAYERS' });
+    if (Object.keys(room.players).length < 2) {
+      throw Object.assign(new Error('At least 2 players required to start'), { statusCode: 400, code: 'NOT_ENOUGH_PLAYERS' });
     }
 
     console.log(`[Game] Generating questions for room ${roomCode}...`);
@@ -109,21 +105,9 @@ class GameService {
     if (room.status !== 'active') throw Object.assign(new Error('Game is not active'), { statusCode: 400, code: 'GAME_NOT_ACTIVE' });
     if (room.phase !== 'answering') throw Object.assign(new Error('Phase is not answering'), { statusCode: 400, code: 'WRONG_PHASE' });
 
-    const currentQuestion = room.questions[room.currentQuestionIndex];
-    const questionStartedAt = room.questionStartedAt;
-
-    // Score all players for this question
+    // Mark non-answering players with a null entry so the leaderboard has a record
     for (const player of Object.values(room.players)) {
-      const existingAnswer = player.answers[room.currentQuestionIndex];
-      if (existingAnswer) {
-        // Already has answer, ensure points are calculated
-        if (existingAnswer.pointsEarned === 0 && existingAnswer.selected === currentQuestion.correct) {
-          const timeRemaining = Math.max(0, QUESTION_DURATION_MS - (existingAnswer.submittedAt - (questionStartedAt || existingAnswer.submittedAt)));
-          existingAnswer.pointsEarned = 100 + Math.floor((timeRemaining / QUESTION_DURATION_MS) * 50);
-          player.score += existingAnswer.pointsEarned;
-        }
-      } else {
-        // No answer submitted — mark as null/no answer
+      if (!player.answers[room.currentQuestionIndex]) {
         player.answers[room.currentQuestionIndex] = {
           selected: null,
           submittedAt: Date.now(),
@@ -146,30 +130,20 @@ class GameService {
     const player = room.players[playerId];
     if (!player) throw Object.assign(new Error('Player not found'), { statusCode: 404, code: 'PLAYER_NOT_FOUND' });
 
-    // Check if already answered
-    if (room.players[playerId].answers[room.currentQuestionIndex]) {
-      throw Object.assign(new Error('Already answered this question'), { statusCode: 400, code: 'ALREADY_ANSWERED' });
+    const currentQuestion = room.questions[room.currentQuestionIndex];
+
+    // Idempotent — return existing result silently on duplicate submission (SR-04)
+    const existing = room.players[playerId].answers[room.currentQuestionIndex];
+    if (existing) {
+      return { pointsEarned: existing.pointsEarned, correct: existing.selected === currentQuestion.correct };
     }
 
-    const currentQuestion = room.questions[room.currentQuestionIndex];
     const now = Date.now();
     const isCorrect = answer === currentQuestion.correct;
+    const pointsEarned = calculatePoints(currentQuestion.correct, answer, room.questionStartedAt!, now);
 
-    let pointsEarned = 0;
-    if (isCorrect) {
-      const timeRemaining = Math.max(0, QUESTION_DURATION_MS - (now - (room.questionStartedAt || now)));
-      pointsEarned = 100 + Math.floor((timeRemaining / QUESTION_DURATION_MS) * 50);
-    }
-
-    room.players[playerId].answers[room.currentQuestionIndex] = {
-      selected: answer,
-      submittedAt: now,
-      pointsEarned,
-    };
-
-    if (isCorrect) {
-      room.players[playerId].score += pointsEarned;
-    }
+    room.players[playerId].answers[room.currentQuestionIndex] = { selected: answer, submittedAt: now, pointsEarned };
+    room.players[playerId].score += pointsEarned;
 
     await roomService.updateRoom(room);
     return { pointsEarned, correct: isCorrect };

@@ -1,7 +1,7 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { gameService } from '../services/gameService';
 import { roomService } from '../services/roomService';
-import { requireHost } from '../middleware/authMiddleware';
+import { requireHost, requirePlayer } from '../middleware/authMiddleware';
 import { validateAnswerOption } from '../utils/validate';
 
 const router = Router();
@@ -68,6 +68,12 @@ router.get('/:code/state', async (req: Request, res: Response, next: NextFunctio
       return;
     }
 
+    // Reject ambiguous requests — sending both headers could be used to escalate player → host
+    if (hostId && playerId) {
+      res.status(400).json({ error: 'AMBIGUOUS_AUTH', message: 'Send only one of x-host-id or x-player-id' });
+      return;
+    }
+
     const room = await roomService.getRoom(code.toUpperCase());
     if (!room) {
       res.status(404).json({ error: 'ROOM_NOT_FOUND', message: 'Room not found' });
@@ -100,27 +106,10 @@ router.get('/:code/state', async (req: Request, res: Response, next: NextFunctio
 });
 
 // POST /api/game/:code/answer — submit answer (player only)
-router.post('/:code/answer', async (req: Request, res: Response, next: NextFunction) => {
+router.post('/:code/answer', requirePlayer, async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { code } = req.params;
-    const playerId = req.headers['x-player-id'] as string | undefined;
-
-    if (!playerId) {
-      res.status(403).json({ error: 'FORBIDDEN', message: 'Player ID required' });
-      return;
-    }
-
-    const room = await roomService.getRoom(code.toUpperCase());
-    if (!room) {
-      res.status(404).json({ error: 'ROOM_NOT_FOUND', message: 'Room not found' });
-      return;
-    }
-
-    if (!room.players[playerId]) {
-      res.status(403).json({ error: 'FORBIDDEN', message: 'Invalid player ID' });
-      return;
-    }
-
+    const playerId = req.headers['x-player-id'] as string;
     const { answer } = req.body as { answer?: string };
 
     if (!validateAnswerOption(answer)) {

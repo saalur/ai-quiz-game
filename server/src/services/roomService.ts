@@ -44,7 +44,8 @@ class RoomService {
   }
 
   async saveRoom(room: Room): Promise<void> {
-    const ttl = Math.max(1, Math.floor((room.expiresAt - Date.now()) / 1000));
+    const ttl = Math.floor((room.expiresAt - Date.now()) / 1000);
+    if (ttl <= 0) throw Object.assign(new Error('Room has expired'), { statusCode: 410, code: 'ROOM_EXPIRED' });
     await this.redis.set(this.key(room.code), JSON.stringify(room), 'EX', ttl);
   }
 
