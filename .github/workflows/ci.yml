@@ -33,6 +33,7 @@ jobs:
       - name: Run tests
         run: npm test
         env:
+          # Required by config.ts fail-fast check — tests mock Claude so key is never used
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           NODE_ENV: test
 
@@ -62,4 +63,4 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_API_URL: https://placeholder-for-ci-build.example.com
+          VITE_API_URL: https://placeholder-for-ci-build.azurecontainerapps.io

@@ -5,7 +5,6 @@ on:
     branches: [main]
 
 env:
-  ACR_NAME: aiquizgameacr
   ACR_LOGIN_SERVER: aiquizgameacr.azurecr.io
   CONTAINER_APP_NAME: ca-ai-quiz-game-server
   CONTAINER_APP_ENV: cae-ai-quiz-game
@@ -13,17 +12,17 @@ env:
 
 jobs:
   deploy:
-    name: Build & Deploy Server
+    name: Build & Deploy
     runs-on: ubuntu-latest
 
     permissions:
-      id-token: write   # required for OIDC login
+      id-token: write   # required for Managed Identity federated credential
       contents: read
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Azure Login (OIDC — no client secret)
+      - name: Azure Login (Managed Identity — no client secret)
         uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
@@ -31,7 +30,7 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Log in to Azure Container Registry
-        run: az acr login --name ${{ env.ACR_NAME }}
+        run: az acr login --name aiquizgameacr
 
       - name: Build and push Docker image
         run: |
@@ -42,38 +41,48 @@ jobs:
 
       - name: Deploy to Azure Container Apps
         run: |
+          # Create on first deploy, update on subsequent deploys
           az containerapp create \
             --name ${{ env.CONTAINER_APP_NAME }} \
             --resource-group ${{ env.RESOURCE_GROUP }} \
             --environment ${{ env.CONTAINER_APP_ENV }} \
             --image ${{ env.IMAGE_TAG }} \
             --registry-server ${{ env.ACR_LOGIN_SERVER }} \
+            --registry-username ${{ secrets.ACR_USERNAME }} \
+            --registry-password ${{ secrets.ACR_PASSWORD }} \
             --target-port 3001 \
             --ingress external \
             --min-replicas 1 \
             --max-replicas 3 \
-            --secrets \
-              anthropic-key=${{ secrets.ANTHROPIC_API_KEY }} \
+            --secrets anthropic-key=${{ secrets.ANTHROPIC_API_KEY }} \
             --env-vars \
               ANTHROPIC_API_KEY=secretref:anthropic-key \
               NODE_ENV=production \
               CORS_ORIGIN=${{ secrets.CORS_ORIGIN }} \
               PORT=3001 \
-          2>/dev/null || az containerapp update \
+          2>/dev/null || \
+          az containerapp update \
             --name ${{ env.CONTAINER_APP_NAME }} \
             --resource-group ${{ env.RESOURCE_GROUP }} \
             --image ${{ env.IMAGE_TAG }}
 
-      - name: Get deployed URL
+      - name: Get deployed server URL
         run: |
           FQDN=$(az containerapp show \
             --name ${{ env.CONTAINER_APP_NAME }} \
             --resource-group ${{ env.RESOURCE_GROUP }} \
             --query "properties.configuration.ingress.fqdn" -o tsv)
-          echo "✅ Server deployed: https://$FQDN"
           echo "SERVER_URL=https://$FQDN" >> $GITHUB_ENV
+          echo "✅ Server live at: https://$FQDN"
 
-      - name: Build client
+      - name: Setup Node.js for client build
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: client/package-lock.json
+
+      - name: Build client with live server URL
         working-directory: client
         run: |
           npm ci
@@ -84,4 +93,4 @@ jobs:
         with:
           name: client-dist-${{ github.sha }}
           path: client/dist/
-          retention-days: 7
+          retention-days: 14
