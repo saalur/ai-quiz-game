@@ -11,6 +11,10 @@ export function validateName(name: unknown): { valid: boolean; message?: string 
   if (trimmed.length > 20) {
     return { valid: false, message: 'Name must be at most 20 characters' };
   }
+  // Block control characters, ANSI escapes, and log-injection sequences
+  if (!/^[\p{L}\p{N} '_-]+$/u.test(trimmed)) {
+    return { valid: false, message: 'Name contains invalid characters. Use letters, numbers, spaces, hyphens or underscores only.' };
+  }
   return { valid: true };
 }
 

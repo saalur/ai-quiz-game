@@ -3,7 +3,7 @@ import { roomService } from '../services/roomService';
 
 export async function requireHost(req: Request, res: Response, next: NextFunction): Promise<void> {
   const hostId = req.headers['x-host-id'] as string | undefined;
-  const roomCode = req.params.code;
+  const roomCode = req.params.code?.toUpperCase();
 
   if (!hostId) {
     res.status(403).json({ error: 'FORBIDDEN', message: 'Host ID required' });
@@ -26,7 +26,7 @@ export async function requireHost(req: Request, res: Response, next: NextFunctio
 
 export async function requirePlayer(req: Request, res: Response, next: NextFunction): Promise<void> {
   const playerId = req.headers['x-player-id'] as string | undefined;
-  const roomCode = req.params.code;
+  const roomCode = req.params.code?.toUpperCase();
 
   if (!playerId) {
     res.status(403).json({ error: 'FORBIDDEN', message: 'Player ID required' });

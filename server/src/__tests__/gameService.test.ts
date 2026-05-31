@@ -209,13 +209,13 @@ describe('getGameState — answer leak prevention (SR-01)', () => {
     expect(state.currentQuestion!.correct).toBeNull();
   });
 
-  it('phase=answering, isHost=true → currentQuestion.correct is NOT null', async () => {
+  it('phase=answering, isHost=true → currentQuestion.correct is null (Finding 7 fix: host sees no early answer)', async () => {
     const room = makeRoom({ phase: 'answering' });
     mockGetRoom.mockResolvedValue(room);
 
     const state = await gameService.getGameState('ABC123', 'host-uuid', true);
     expect(state.currentQuestion).not.toBeNull();
-    expect(state.currentQuestion!.correct).not.toBeNull();
+    expect(state.currentQuestion!.correct).toBeNull();
   });
 
   it('phase=revealed, isHost=false → currentQuestion.correct is NOT null', async () => {

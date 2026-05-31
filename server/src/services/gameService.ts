@@ -153,8 +153,8 @@ class GameService {
     const room = await roomService.getRoom(roomCode);
     if (!room) throw Object.assign(new Error('Room not found'), { statusCode: 404, code: 'ROOM_NOT_FOUND' });
 
-    // Hosts can see answers during answering phase; players cannot
-    const revealAnswers = room.phase === 'revealed' || room.phase === 'finished' || isHost;
+    // Answers only revealed after host calls /reveal — host has no legitimate need to see early
+    const revealAnswers = room.phase === 'revealed' || room.phase === 'finished';
 
     const questionDeadline =
       room.phase === 'answering' && room.questionStartedAt

@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import rateLimit from 'express-rate-limit';
 import { config } from './config';
 import { roomService } from './services/roomService';
 import roomsRouter from './routes/rooms';
@@ -15,7 +16,11 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'x-host-id', 'x-player-id'],
 }));
 
-app.use(express.json());
+app.use(express.json({ limit: '10kb' }));
+
+// Rate limiting — protect Anthropic quota and Redis from flooding
+const roomsLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 10, standardHeaders: true, legacyHeaders: false });
+const gameLimiter = rateLimit({ windowMs: 60 * 1000, max: 60, standardHeaders: true, legacyHeaders: false });
 
 // Health check
 app.get('/health', (_req, res) => {
@@ -23,8 +28,8 @@ app.get('/health', (_req, res) => {
 });
 
 // Routes
-app.use('/api/rooms', roomsRouter);
-app.use('/api/game', gameRouter);
+app.use('/api/rooms', roomsLimiter, roomsRouter);
+app.use('/api/game', gameLimiter, gameRouter);
 
 // 404 handler
 app.use((_req, res) => {
