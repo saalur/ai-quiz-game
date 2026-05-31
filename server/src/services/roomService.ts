@@ -1,78 +1,61 @@
-import Redis from 'ioredis';
 import { v4 as uuidv4 } from 'uuid';
-import { config } from '../config';
 import { Room, GameConfig } from '../types';
 import { generateRoomCode } from '../utils/roomCode';
 
-const ROOM_TTL = 7200; // 2 hours in seconds
-const REDIS_KEY_PREFIX = 'room:';
+const ROOM_TTL_MS = 7200 * 1000; // 2 hours
 
 class RoomService {
-  private redis: Redis;
+  private rooms = new Map<string, Room>();
 
+  // Purge expired rooms periodically to avoid unbounded memory growth
   constructor() {
-    this.redis = new Redis(config.redisUrl, {
-      lazyConnect: true,
-      maxRetriesPerRequest: 3,
-    });
-
-    this.redis.on('error', (err) => {
-      console.error('[Redis] Connection error:', err.message);
-    });
-
-    this.redis.on('connect', () => {
-      console.log('[Redis] Connected');
-    });
+    // .unref() so this timer doesn't keep the process alive during tests
+    setInterval(() => this.purgeExpired(), 60 * 1000).unref();
   }
 
-  async connect(): Promise<void> {
-    await this.redis.connect();
-  }
-
-  private key(code: string): string {
-    return `${REDIS_KEY_PREFIX}${code}`;
-  }
-
-  async getRoom(code: string): Promise<Room | null> {
-    const data = await this.redis.get(this.key(code));
-    if (!data) return null;
-    try {
-      return JSON.parse(data) as Room;
-    } catch {
-      return null;
+  private purgeExpired(): void {
+    const now = Date.now();
+    for (const [code, room] of this.rooms) {
+      if (room.expiresAt <= now) this.rooms.delete(code);
     }
   }
 
+  async connect(): Promise<void> {
+    // No-op — kept for interface compatibility
+  }
+
+  async getRoom(code: string): Promise<Room | null> {
+    const room = this.rooms.get(code) ?? null;
+    if (room && room.expiresAt <= Date.now()) {
+      this.rooms.delete(code);
+      return null;
+    }
+    return room;
+  }
+
   async saveRoom(room: Room): Promise<void> {
-    const ttl = Math.floor((room.expiresAt - Date.now()) / 1000);
-    if (ttl <= 0) throw Object.assign(new Error('Room has expired'), { statusCode: 410, code: 'ROOM_EXPIRED' });
-    await this.redis.set(this.key(room.code), JSON.stringify(room), 'EX', ttl);
+    if (room.expiresAt <= Date.now()) {
+      throw Object.assign(new Error('Room has expired'), { statusCode: 410, code: 'ROOM_EXPIRED' });
+    }
+    this.rooms.set(room.code, room);
   }
 
   async roomExists(code: string): Promise<boolean> {
-    const count = await this.redis.exists(this.key(code));
-    return count > 0;
+    return (await this.getRoom(code)) !== null;
   }
 
   async createRoom(gameConfig: GameConfig): Promise<Room> {
-    // Generate unique room code
     let code: string;
     let attempts = 0;
     do {
       code = generateRoomCode();
-      attempts++;
-      if (attempts > 10) {
-        throw new Error('Failed to generate unique room code');
-      }
+      if (++attempts > 10) throw new Error('Failed to generate unique room code');
     } while (await this.roomExists(code));
 
-    const hostId = uuidv4();
     const now = Date.now();
-    const expiresAt = now + ROOM_TTL * 1000;
-
     const room: Room = {
       code,
-      hostId,
+      hostId: uuidv4(),
       status: 'lobby',
       config: gameConfig,
       players: {},
@@ -81,11 +64,10 @@ class RoomService {
       phase: 'answering',
       questionStartedAt: null,
       createdAt: now,
-      expiresAt,
+      expiresAt: now + ROOM_TTL_MS,
     };
 
-    // Add host as a player entry (host tracks via hostId separately)
-    await this.saveRoom(room);
+    this.rooms.set(code, room);
     return room;
   }
 
@@ -94,18 +76,15 @@ class RoomService {
     if (!room) return null;
 
     const playerId = uuidv4();
-    const now = Date.now();
-
     room.players[playerId] = {
       id: playerId,
       name: name.trim(),
       score: 0,
       answers: {},
-      joinedAt: now,
+      joinedAt: Date.now(),
       isHost: false,
     };
 
-    await this.saveRoom(room);
     return { playerId, room };
   }
 

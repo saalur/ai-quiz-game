@@ -43,13 +43,7 @@ Vary which letter (A/B/C/D) is correct. Questions must be unique.`;
       const response = await this.client.messages.create({
         model: 'claude-sonnet-4-6',
         max_tokens: 4096,
-        system: [
-          {
-            type: 'text',
-            text: SYSTEM_PROMPT,
-            cache_control: { type: 'ephemeral' },
-          },
-        ],
+        system: SYSTEM_PROMPT,
         messages: [
           {
             role: 'user',

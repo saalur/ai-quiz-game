@@ -41,13 +41,10 @@ app.use(errorHandler);
 
 async function main() {
   try {
-    // Connect to Redis
-    await roomService.connect();
-    console.log('[Server] Redis connected');
-
     app.listen(config.port, () => {
       console.log(`[Server] Listening on port ${config.port}`);
       console.log(`[Server] CORS origin: ${config.corsOrigin}`);
+      console.log('[Server] Using in-memory room store');
     });
   } catch (err) {
     console.error('[Server] Failed to start:', err);
